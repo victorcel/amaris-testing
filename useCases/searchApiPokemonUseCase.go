@@ -20,13 +20,12 @@ func NewPokemon(client *http.Client) *Pokemon {
 	return &Pokemon{client: client}
 }
 
-func (p *Pokemon) GetPokemon(pokemonID int) (models.Episodio, error) {
+func (p *Pokemon) GetPokemon(pokemonID int) (episodio models.Episodio, err error) {
 
 	url := fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", pokemonID)
 	method := "GET"
 
 	req, err := http.NewRequest(method, url, nil)
-	episodio := models.Episodio{}
 
 	if err != nil {
 

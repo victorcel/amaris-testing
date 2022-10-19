@@ -31,6 +31,11 @@ func TestPokemon_GetPokemon(t *testing.T) {
 			return httpmock.NewStringResponse(http.StatusInternalServerError, ""), nil
 		})
 
+	httpmock.RegisterResponder("GET1", fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", 22),
+		func(req *http.Request) (*http.Response, error) {
+			return httpmock.NewStringResponse(http.StatusInternalServerError, ""), nil
+		})
+
 	type fields struct {
 		client *http.Client
 	}
@@ -68,6 +73,18 @@ func TestPokemon_GetPokemon(t *testing.T) {
 			},
 			args: args{
 				pokemonID: 1111,
+			},
+			want: *&models.Episodio{},
+
+			wantErr: true,
+		},
+		{
+			name: "TestGetPokemon error methodErr",
+			fields: fields{
+				client: &http.Client{},
+			},
+			args: args{
+				pokemonID: 22,
 			},
 			want: *&models.Episodio{},
 

@@ -10,7 +10,7 @@ func OrderText(text string) (response []string, err error) {
 	invalidCharacters := ";:.'!@#$<>?[{]}\"'"
 
 	if strings.ContainsAny(text, invalidCharacters) {
-		return nil, errors.New("invalid character Example: \"victor,elias\"")
+		return nil, errors.New("invalid character Example: victor,elias")
 	}
 
 	response = strings.Split(text, ",")
