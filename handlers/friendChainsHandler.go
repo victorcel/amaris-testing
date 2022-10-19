@@ -6,6 +6,7 @@ import (
 	"github.com/victorcel/amaris-testing/helper"
 	"github.com/victorcel/amaris-testing/useCases"
 	"net/http"
+	"strings"
 )
 
 func FriendChainsHandler() http.HandlerFunc {
@@ -25,8 +26,8 @@ func FriendChainsHandler() http.HandlerFunc {
 			return
 		}
 
-		dataX := requestData.X
-		dataY := requestData.Y
+		dataX := strings.ToUpper(requestData.X)
+		dataY := strings.ToUpper(requestData.Y)
 
 		if dataX == "" || dataY == "" {
 			writer.WriteHeader(http.StatusBadRequest)

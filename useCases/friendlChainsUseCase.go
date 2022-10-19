@@ -3,7 +3,6 @@ package useCases
 import (
 	"errors"
 	"fmt"
-	"strings"
 )
 
 const (
@@ -14,7 +13,7 @@ const (
 
 func FriendlyChains(x, y string) (response string, err error) {
 
-	if len(strings.ToUpper(x)) != len(strings.ToUpper(y)) {
+	if len(x) != len(y) {
 		return "", errors.New(TEXTSTRINGLENGTH)
 	}
 
