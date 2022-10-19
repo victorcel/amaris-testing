@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func SearchPokemon() http.HandlerFunc {
+func SearchPokemonHandler() http.HandlerFunc {
 
 	return func(writer http.ResponseWriter, request *http.Request) {
 		writer.Header().Set("Content-Type", "application/json")
