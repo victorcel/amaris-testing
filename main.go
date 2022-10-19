@@ -13,15 +13,6 @@ import (
 
 func main() {
 
-	//fmt.Println(useCases.OrderText("Luis,Camilo;Andres,Laura"))
-	//usePokemon := useCases.NewPokemon(&http.Client{})
-	//pokemon, err := usePokemon.GetPokemon(1111)
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//
-	//fmt.Println(pokemon.ID)
-
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -34,6 +25,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error creating server %v\n", err)
 	}
+
 	pokemon := useCases.NewPokemon(&http.Client{})
 	repository.SetUserRepository(pokemon)
 	s.Start(routers.BindRoutes)
