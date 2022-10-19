@@ -2,25 +2,40 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/victorcel/amaris-testing/helper"
 	"github.com/victorcel/amaris-testing/useCases"
 	"net/http"
+	"strings"
 )
 
-func OrderTextHandler() http.HandlerFunc {
+func FriendChainsHandler() http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
-		var requestData map[string]string
+		var requestData struct {
+			X string `json:"x"`
+			Y string `json:"y"`
+		}
 
 		writer.Header().Set("Content-Type", "application/json")
 
 		err := json.NewDecoder(request.Body).Decode(&requestData)
 
 		if err != nil {
-			http.Error(writer, err.Error(), http.StatusBadRequest)
+			writer.WriteHeader(http.StatusBadRequest)
+			helper.ErrorResponse(writer, err)
 			return
 		}
 
-		orderText, err := useCases.OrderText(requestData["data"])
+		dataX := strings.ToUpper(requestData.X)
+		dataY := strings.ToUpper(requestData.Y)
+
+		if dataX == "" || dataY == "" {
+			writer.WriteHeader(http.StatusBadRequest)
+			helper.ErrorResponse(writer, errors.New("empty variables X or Y"))
+			return
+		}
+
+		orderText, err := useCases.FriendlyChains(dataX, dataY)
 
 		if err != nil {
 			writer.WriteHeader(http.StatusBadRequest)

@@ -62,7 +62,9 @@ Response:
         "Luis"
     ]
 }
+```
 
+```bash
 Url: /api/v1/getPokemon/{id} 
 
 Method: Get
@@ -116,7 +118,26 @@ Response:
         }
     }
 }
+```
 
+```bash
+Url: /api/v1/friendChains 
+
+Method: POST
+
+Payload:
+{
+    "x": "TOKYO",
+    "y": "KYOTO"
+}
+
+Response: 
+{
+     "data": "Las cadenas 'POKYO' y 'KYOTO' no son amigas"
+}
+```
+
+```bash
 Error Response:
 {
     "error": {},
