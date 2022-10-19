@@ -133,7 +133,7 @@ Payload:
 
 Response: 
 {
-     "data": "Las cadenas 'POKYO' y 'KYOTO' no son amigas"
+     "data": "Las cadenas 'TOKYO' y 'KYOTO' son amigas"
 }
 ```
 
