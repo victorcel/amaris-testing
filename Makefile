@@ -29,7 +29,7 @@ help:
 
 	@echo make build -- Checked
 	@echo make run   -- Start
-	@echo make test  -- testing
+	@echo make test  -- testing coverage
 	@echo make up    -- docker up
 	@echo make down  -- docker down
 #go tool commands
