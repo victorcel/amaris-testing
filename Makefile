@@ -34,6 +34,7 @@ help:
 	@echo make down  -- docker down
 #go tool commands
 build:
+	@cp .env.example .env
 	@go build ./...
 
 run:
