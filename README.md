@@ -52,7 +52,7 @@ Payload:
 
 Response: 
 {
-  "quantity": 5,
+  "quantity": 4,
   "data": [
         "Andres",
         "Camilo",
