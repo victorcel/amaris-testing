@@ -8,13 +8,6 @@
 
   <h3 align="center">En esta prueba se observará mis habilidades técnicas en el language de programación en Golang</h3>
 </p>
-<hr>
-
-## Compilation
-
-<hr>
-
-### Automatic
 
 #### Requirements
 
@@ -41,8 +34,12 @@ make up -- docker up
 make down -- docker down
 
 ```
+## Environment
+```
+Se debe sacar copia del archivo .env.example o correr el comando make build
+```
 ## Endpoint
-
+Tiene parametrizado en .env puerto 5050
 ```bash
 Url: /api/v1/orderText 
 
@@ -55,7 +52,8 @@ Payload:
 
 Response: 
 {
-    "Data": [
+  "quantity": 5,
+  "data": [
         "Andres",
         "Camilo",
         "Laura",

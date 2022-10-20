@@ -28,7 +28,7 @@ func OrderTextHandler() http.HandlerFunc {
 			return
 		}
 
-		helper.SuccessResponse(writer, orderText)
+		helper.SuccessOrderTextResponse(writer, orderText)
 	}
 
 }

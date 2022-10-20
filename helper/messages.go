@@ -12,7 +12,12 @@ type errorResponse struct {
 }
 
 type successResponse struct {
-	Data interface{} `json:"data"`
+	Data interface{} `json:"data" json:"data,omitempty"`
+}
+
+type successOrderTextResponse struct {
+	Quantity int         `json:"quantity"`
+	Data     interface{} `json:"data" json:"data,omitempty"`
 }
 
 func ErrorResponse(writer http.ResponseWriter, err error) {
@@ -26,5 +31,11 @@ func ErrorResponse(writer http.ResponseWriter, err error) {
 func SuccessResponse(writer http.ResponseWriter, data interface{}) {
 	json.NewEncoder(writer).Encode(successResponse{
 		Data: data,
+	})
+}
+func SuccessOrderTextResponse(writer http.ResponseWriter, data []string) {
+	json.NewEncoder(writer).Encode(successOrderTextResponse{
+		Quantity: len(data),
+		Data:     data,
 	})
 }
