@@ -23,15 +23,15 @@ Escriba una funcion que reciba como entrada dos cadenas X e Y, e imprima si X e 
 
 ```bash
 # Check commands available
-make build -- Checked
+make build -- Check all files
 
-make run -- Start
+make run   -- Start Server
 
-make test -- testing
+make test  -- Perform coverage tests
 
-make up -- docker up
+make up    -- Docker up
 
-make down -- docker down
+make down  -- Docker down
 
 ```
 ## Environment
