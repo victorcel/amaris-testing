@@ -5,6 +5,7 @@ import (
 	"github.com/jarcoal/httpmock"
 	"github.com/victorcel/amaris-testing/models"
 	"net/http"
+	"os"
 	"reflect"
 	"testing"
 )
@@ -13,7 +14,7 @@ func TestPokemon_GetPokemon(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	httpmock.RegisterResponder("GET", fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", 1),
+	httpmock.RegisterResponder("GET", fmt.Sprintf("%s%d", os.Getenv("POKEMON_API"), 1),
 		func(req *http.Request) (*http.Response, error) {
 			resp, err := httpmock.NewJsonResponse(http.StatusOK, models.Episodio{
 				ID:   1,
@@ -26,12 +27,12 @@ func TestPokemon_GetPokemon(t *testing.T) {
 		},
 	)
 
-	httpmock.RegisterResponder("GET", fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", 1111),
+	httpmock.RegisterResponder("GET", fmt.Sprintf("%s%d", os.Getenv("POKEMON_API"), 1111),
 		func(req *http.Request) (*http.Response, error) {
 			return httpmock.NewStringResponse(http.StatusInternalServerError, ""), nil
 		})
 
-	httpmock.RegisterResponder("GET1", fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", 22),
+	httpmock.RegisterResponder("GET1", fmt.Sprintf("%s%d", os.Getenv("POKEMON_API"), 22),
 		func(req *http.Request) (*http.Response, error) {
 			return httpmock.NewStringResponse(http.StatusInternalServerError, ""), nil
 		})

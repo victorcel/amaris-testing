@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
 	"github.com/victorcel/amaris-testing/repository"
 	"github.com/victorcel/amaris-testing/routers"
@@ -19,7 +20,7 @@ func main() {
 	}
 
 	s, err := server.NewServer(&server.Config{
-		Port: os.Getenv("PORT"),
+		Port: fmt.Sprintf(":%s", os.Getenv("PORT")),
 	})
 
 	if err != nil {

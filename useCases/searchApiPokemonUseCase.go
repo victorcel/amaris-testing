@@ -6,6 +6,7 @@ import (
 	"github.com/victorcel/amaris-testing/models"
 	"io"
 	"net/http"
+	"os"
 )
 
 const (
@@ -22,7 +23,7 @@ func NewPokemon(client *http.Client) *Pokemon {
 
 func (p *Pokemon) GetPokemon(pokemonID int) (episodio models.Episodio, err error) {
 
-	url := fmt.Sprintf("https://pokeapi.co/api/v2/pokemon-form/%d", pokemonID)
+	url := fmt.Sprintf("%s%d", os.Getenv("POKEMON_API"), pokemonID)
 	method := "GET"
 
 	req, err := http.NewRequest(method, url, nil)
